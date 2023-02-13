@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Extensions;
 
-namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata
+namespace Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Metadata
 {
     /// <summary>
     /// 

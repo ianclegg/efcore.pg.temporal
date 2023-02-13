@@ -12,6 +12,22 @@
     <Feature>nullablePublicOnly</Feature>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
+	  <WarningsNotAsErrors>CS1591</WarningsNotAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|AnyCPU'">
+	  <WarningsNotAsErrors>CS1591</WarningsNotAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+	  <WarningsNotAsErrors>CS1591</WarningsNotAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
+	  <WarningsNotAsErrors>CS1591</WarningsNotAsErrors>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- PrivateAssets="none" is set to flow the EF Core analyzer to users referencing this package https://github.com/aspnet/EntityFrameworkCore/pull/11350 -->
 		<PackageReference Include="Microsoft.EntityFrameworkCore" PrivateAssets="none" />
@@ -25,7 +41,6 @@
 		<Folder Include="MetadataExtensions\" />
 		<Folder Include="Metadata\" />
 		<Folder Include="Expressions\" />
-		<Folder Include="Query\" />
 	</ItemGroup>
 
 	<ItemGroup>

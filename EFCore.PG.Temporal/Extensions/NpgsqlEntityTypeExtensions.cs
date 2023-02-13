@@ -1,11 +1,7 @@
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Internal;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Internal;
 
-using  Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Metadata;
-using  Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Metadata.Internal;
-
-// ReSharper disable once CheckNamespace
-namespace Microsoft.EntityFrameworkCore;
+namespace Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Extensions;
 
 /// <summary>
 /// Extension methods for <see cref="IEntityType" /> for Npgsql-specific metadata.
@@ -18,7 +14,7 @@ public static class NpgsqlEntityTypeExtensions
     /// <param name="entityType">The entity type.</param>
     /// <returns><see langword="true" /> if the entity type is mapped to a temporal table.</returns>
     public static bool IsTemporal(this IReadOnlyEntityType entityType)
-        => entityType[NpgsqlAnnotationNames.IsTemporal] as bool? ?? false;
+        => entityType[NpgsqlTemporalAnnotationNames.IsTemporal] as bool? ?? false;
 
     /// <summary>
     ///     Sets a value indicating whether the entity type is mapped to a temporal table.
@@ -26,7 +22,7 @@ public static class NpgsqlEntityTypeExtensions
     /// <param name="entityType">The entity type.</param>
     /// <param name="temporal">The value to set.</param>
     public static void SetIsTemporal(this IMutableEntityType entityType, bool temporal)
-        => entityType.SetOrRemoveAnnotation(NpgsqlAnnotationNames.IsTemporal, temporal);
+        => entityType.SetOrRemoveAnnotation(NpgsqlTemporalAnnotationNames.IsTemporal, temporal);
 
     /// <summary>
     ///     Sets a value indicating whether the entity type is mapped to a temporal table.
@@ -40,7 +36,7 @@ public static class NpgsqlEntityTypeExtensions
         bool? temporal,
         bool fromDataAnnotation = false)
         => (bool?)entityType.SetOrRemoveAnnotation(
-            NpgsqlAnnotationNames.IsTemporal,
+            NpgsqlTemporalAnnotationNames.IsTemporal,
             temporal,
             fromDataAnnotation)?.Value;
 
@@ -50,7 +46,7 @@ public static class NpgsqlEntityTypeExtensions
     /// <param name="entityType">The entity type.</param>
     /// <returns>The configuration source for the temporal table setting.</returns>
     public static ConfigurationSource? GetIsTemporalConfigurationSource(this IConventionEntityType entityType)
-        => entityType.FindAnnotation(NpgsqlAnnotationNames.IsTemporal)?.GetConfigurationSource();
+        => entityType.FindAnnotation(NpgsqlTemporalAnnotationNames.IsTemporal)?.GetConfigurationSource();
 
     /// <summary>
     ///     Returns a value representing the name of the period start property of the entity mapped to a temporal table.
@@ -60,7 +56,7 @@ public static class NpgsqlEntityTypeExtensions
     public static string? GetPeriodStartPropertyName(this IReadOnlyEntityType entityType)
         => (entityType is RuntimeEntityType)
             ? throw new InvalidOperationException(CoreStrings.RuntimeModelMissingData)
-            : entityType[NpgsqlAnnotationNames.TemporalPeriodStartPropertyName] as string;
+            : entityType[NpgsqlTemporalAnnotationNames.TemporalPeriodStartPropertyName] as string;
 
     /// <summary>
     ///     Sets a value representing the name of the period start property of the entity mapped to a temporal table.
@@ -68,7 +64,7 @@ public static class NpgsqlEntityTypeExtensions
     /// <param name="entityType">The entity type.</param>
     /// <param name="periodStartPropertyName">The value to set.</param>
     public static void SetPeriodStartPropertyName(this IMutableEntityType entityType, string? periodStartPropertyName)
-        => entityType.SetAnnotation(NpgsqlAnnotationNames.TemporalPeriodStartPropertyName, periodStartPropertyName);
+        => entityType.SetAnnotation(NpgsqlTemporalAnnotationNames.TemporalPeriodStartPropertyName, periodStartPropertyName);
 
     /// <summary>
     ///     Sets a value representing the name of the period start property of the entity mapped to a temporal table.
@@ -82,7 +78,7 @@ public static class NpgsqlEntityTypeExtensions
         string? periodStartPropertyName,
         bool fromDataAnnotation = false)
         => (string?)entityType.SetAnnotation(
-            NpgsqlAnnotationNames.TemporalPeriodStartPropertyName,
+            NpgsqlTemporalAnnotationNames.TemporalPeriodStartPropertyName,
             periodStartPropertyName,
             fromDataAnnotation)?.Value;
 
@@ -92,7 +88,7 @@ public static class NpgsqlEntityTypeExtensions
     /// <param name="entityType">The entity type.</param>
     /// <returns>The configuration source for the temporal table period start property name setting.</returns>
     public static ConfigurationSource? GetPeriodStartPropertyNameConfigurationSource(this IConventionEntityType entityType)
-        => entityType.FindAnnotation(NpgsqlAnnotationNames.TemporalPeriodStartPropertyName)?.GetConfigurationSource();
+        => entityType.FindAnnotation(NpgsqlTemporalAnnotationNames.TemporalPeriodStartPropertyName)?.GetConfigurationSource();
 
     /// <summary>
     ///     Returns a value representing the name of the period end property of the entity mapped to a temporal table.
@@ -102,7 +98,7 @@ public static class NpgsqlEntityTypeExtensions
     public static string? GetPeriodEndPropertyName(this IReadOnlyEntityType entityType)
         => (entityType is RuntimeEntityType)
             ? throw new InvalidOperationException(CoreStrings.RuntimeModelMissingData)
-            : entityType[NpgsqlAnnotationNames.TemporalPeriodEndPropertyName] as string;
+            : entityType[NpgsqlTemporalAnnotationNames.TemporalPeriodEndPropertyName] as string;
 
     /// <summary>
     ///     Sets a value representing the name of the period end property of the entity mapped to a temporal table.
@@ -110,7 +106,7 @@ public static class NpgsqlEntityTypeExtensions
     /// <param name="entityType">The entity type.</param>
     /// <param name="periodEndPropertyName">The value to set.</param>
     public static void SetPeriodEndPropertyName(this IMutableEntityType entityType, string? periodEndPropertyName)
-        => entityType.SetAnnotation(NpgsqlAnnotationNames.TemporalPeriodEndPropertyName, periodEndPropertyName);
+        => entityType.SetAnnotation(NpgsqlTemporalAnnotationNames.TemporalPeriodEndPropertyName, periodEndPropertyName);
 
     /// <summary>
     ///     Sets a value representing the name of the period end property of the entity mapped to a temporal table.
@@ -124,7 +120,7 @@ public static class NpgsqlEntityTypeExtensions
         string? periodEndPropertyName,
         bool fromDataAnnotation = false)
         => (string?)entityType.SetAnnotation(
-            NpgsqlAnnotationNames.TemporalPeriodEndPropertyName,
+            NpgsqlTemporalAnnotationNames.TemporalPeriodEndPropertyName,
             periodEndPropertyName,
             fromDataAnnotation)?.Value;
 
@@ -134,5 +130,5 @@ public static class NpgsqlEntityTypeExtensions
     /// <param name="entityType">The entity type.</param>
     /// <returns>The configuration source for the temporal table period end property name setting.</returns>
     public static ConfigurationSource? GetPeriodEndPropertyNameConfigurationSource(this IConventionEntityType entityType)
-        => entityType.FindAnnotation(NpgsqlAnnotationNames.TemporalPeriodEndPropertyName)?.GetConfigurationSource();
+        => entityType.FindAnnotation(NpgsqlTemporalAnnotationNames.TemporalPeriodEndPropertyName)?.GetConfigurationSource();
 }

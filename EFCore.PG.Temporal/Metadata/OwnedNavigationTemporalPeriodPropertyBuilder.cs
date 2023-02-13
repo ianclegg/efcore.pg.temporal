@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata
+namespace Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Metadata
 {
     /// <summary>
     ///     Instances of this class are returned from methods when using the <see cref="ModelBuilder" /> API

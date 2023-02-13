@@ -14,6 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.PG.Temporal", "EFCor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.PG.Temporal.Tests", "EFCore.PG.Temporal.Tests\EFCore.PG.Temporal.Tests.csproj", "{936E2A52-0156-4251-9623-60AF0CA468CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github", "Github", "{31BA9C6D-C913-4C53-8587-AD14AF947D2A}"
+	ProjectSection(SolutionItems) = preProject
+		build.yml = build.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +36,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31BA9C6D-C913-4C53-8587-AD14AF947D2A} = {9189788D-61FF-490A-8CE3-9AAF7FB2DC56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16E9776C-4809-4CFA-B41E-877ACFA9D36B}
