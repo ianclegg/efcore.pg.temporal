@@ -1,14 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<IsPackable>false</IsPackable>
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
-    	<AssemblyName>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Tests</AssemblyName>
-    	<RootNamespace>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal</RootNamespace>
+    <TargetFramework>net7.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- There's lots of use of internal EF Core APIs from the tests, suppress the analyzer warnings for those -->
+    <NoWarn>$(NoWarn);xUnit1003;xUnit1004;xUnit1013;xUnit1024;EF1001</NoWarn>
+
+    <AssemblyName>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Tests</AssemblyName>
+    <RootNamespace>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\EFCore.PG.Temporal\EFCore.PG.Temporal.csproj" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Specification.Tests" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="Npgsql.DependencyInjection" />
+  </ItemGroup>
+
 </Project>

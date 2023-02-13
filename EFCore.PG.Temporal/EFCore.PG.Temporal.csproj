@@ -5,12 +5,28 @@
 		<RootNamespace>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal</RootNamespace>
 		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<TargetFrameworks Condition="'$(DeveloperBuild)' == 'True'">net7.0</TargetFrameworks>
-    	<IncludeSymbols>true</IncludeSymbols>
-    	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    	<EmbedUntrackedSources>true</EmbedUntrackedSources>
-    	<Nullable>enable</Nullable>
-    	<Feature>nullablePublicOnly</Feature>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <Nullable>enable</Nullable>
+    <Feature>nullablePublicOnly</Feature>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- PrivateAssets="none" is set to flow the EF Core analyzer to users referencing this package https://github.com/aspnet/EntityFrameworkCore/pull/11350 -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore" PrivateAssets="none" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" PrivateAssets="none" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" PrivateAssets="none" />
+		<PackageReference Include="Npgsql" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="MetadataExtensions\" />
+		<Folder Include="Metadata\" />
+		<Folder Include="Expressions\" />
+		<Folder Include="Query\" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="README.md" Pack="true" PackagePath="\" />
