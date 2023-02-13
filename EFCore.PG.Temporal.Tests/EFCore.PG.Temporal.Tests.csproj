@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+    	<AssemblyName>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Tests</AssemblyName>
+    	<RootNamespace>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\EFCore.PG.Temporal\EFCore.PG.Temporal.csproj" />
+	</ItemGroup>
+</Project>

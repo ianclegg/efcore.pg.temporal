@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal</AssemblyName>
+		<RootNamespace>Npgsql.EntityFrameworkCore.PostgreSQL.Temporal</RootNamespace>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(DeveloperBuild)' == 'True'">net7.0</TargetFrameworks>
+    	<IncludeSymbols>true</IncludeSymbols>
+    	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    	<EmbedUntrackedSources>true</EmbedUntrackedSources>
+    	<Nullable>enable</Nullable>
+    	<Feature>nullablePublicOnly</Feature>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>
