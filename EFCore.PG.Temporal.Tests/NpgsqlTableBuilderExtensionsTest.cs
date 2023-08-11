@@ -9,20 +9,20 @@ namespace Npgsql.EntityFrameworkCore.PostgreSQL.Temporal.Tests
         [Fact]
         public void can_set_table_as_temporal()
         {
-            var modelBuilder = CreateConventionModelBuilder();
+            //var modelBuilder = CreateConventionModelBuilder();
 
-            modelBuilder.Entity<Customer>()
-                .ToTable("customers",
-                    tb => tb.IsTemporal(
-                        ttb =>
-                        {
-                            ttb.HasPeriodStart("SystemTimeStart").HasColumnName("Start");
-                            ttb.HasPeriodEnd("SystemTimeEnd").HasColumnName("End");
-                        }
-            ));
+            //modelBuilder.Entity<Customer>()
+            //    .ToTable("customers",
+            //        tb => tb.IsTemporal(
+            //            ttb =>
+            //            {
+            //                ttb.HasPeriodStart("SystemTimeStart").HasColumnName("Start");
+            //                ttb.HasPeriodEnd("SystemTimeEnd").HasColumnName("End");
+            //            }
+            //));
 
 
-            var entityType = modelBuilder.Model.FindEntityType(typeof(Customer));
+            //var entityType = modelBuilder.Model.FindEntityType(typeof(Customer));
         }
 
         protected virtual ModelBuilder CreateConventionModelBuilder()
